@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <screen id="yaap$Category.browse"
+            template="ru/iovchinnikov/yaap/web/category/category-browse.xml"/>
+    <screen id="yaap$Category.edit"
+            template="ru/iovchinnikov/yaap/web/category/category-edit.xml"/>
+    <screen id="yaap$Transaction.browse"
+            template="ru/iovchinnikov/yaap/web/transaction/transaction-browse.xml"/>
+    <screen id="yaap$Transaction.edit"
+            template="ru/iovchinnikov/yaap/web/transaction/transaction-edit.xml"/>
+    <screen id="mainWindow"
+            template="ru/iovchinnikov/yaap/web/screens/ext-mainwindow.xml"/>
+    <screen id="yaap$Transaction.income"
+            template="ru/iovchinnikov/yaap/web/transaction/transaction-income.xml"/>
+    <screen id="yaap$Transaction.spend"
+            template="ru/iovchinnikov/yaap/web/transaction/transaction-spend.xml"/>
+</screen-config>

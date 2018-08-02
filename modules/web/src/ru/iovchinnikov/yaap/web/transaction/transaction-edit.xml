@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.iovchinnikov.yaap.web.transaction.TransactionEdit"
+        datasource="transactionDs"
+        focusComponent="mainGroup"
+        messagesPack="ru.iovchinnikov.yaap.web.transaction">
+    <dsContext>
+        <datasource id="transactionDs"
+                    class="ru.iovchinnikov.yaap.entity.Transaction"
+                    view="transaction-view"/>
+    </dsContext>
+    <dialogMode closeOnClickOutside="true"
+                forceDialog="true"
+                height="400"
+                width="400"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="mainGroup"
+                    datasource="transactionDs">
+            <column width="250px">
+                <field property="name"/>
+                <field property="category"/>
+                <field property="source"/>
+                <field id="fTotal"
+                       property="total"/>
+                <field id="fAmount"
+                       property="amount"/>
+                <field property="description"
+                       rows="5"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

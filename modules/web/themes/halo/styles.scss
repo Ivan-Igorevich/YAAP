@@ -1,0 +1,11 @@
+@import "halo-defaults";
+@import "ru.iovchinnikov.yaap/halo-ext-defaults";
+@import "app-components";
+@import "ru.iovchinnikov.yaap/halo-ext";
+
+.halo {
+  // include auto-generated app components SCSS
+  @include app_components;
+  
+  @include ru_iovchinnikov_yaap-halo-ext;
+}

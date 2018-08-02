@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.iovchinnikov.yaap.web.category.CategoryEdit"
+        datasource="categoryDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.iovchinnikov.yaap.web.category">
+    <dsContext>
+        <datasource id="categoryDs"
+                    class="ru.iovchinnikov.yaap.entity.Category"
+                    view="category-view"/>
+    </dsContext>
+    <dialogMode closeOnClickOutside="true"
+                forceDialog="true"
+                height="170"
+                width="480"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="categoryDs">
+            <column width="250px">
+                <field property="name"/>
+                <field property="parent"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

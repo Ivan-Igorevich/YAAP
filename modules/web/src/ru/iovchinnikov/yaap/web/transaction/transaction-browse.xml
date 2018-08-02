@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.iovchinnikov.yaap.web.transaction.TransactionBrowse"
+        focusComponent="transactionsTable"
+        lookupComponent="transactionsTable"
+        messagesPack="ru.iovchinnikov.yaap.web.transaction">
+    <dsContext>
+        <groupDatasource id="transactionsDs"
+                         class="ru.iovchinnikov.yaap.entity.Transaction"
+                         view="transaction-view">
+            <query>
+                <![CDATA[select e from yaap$Transaction e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <groupTable id="transactionsTable"
+                    height="100%"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="category"/>
+                <column id="source"/>
+                <column id="total"/>
+                <column id="amount"/>
+                <column id="description"/>
+            </columns>
+            <rows datasource="transactionsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="transactionsTable.create"/>
+                <button id="editBtn"
+                        action="transactionsTable.edit"/>
+                <button id="removeBtn"
+                        action="transactionsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

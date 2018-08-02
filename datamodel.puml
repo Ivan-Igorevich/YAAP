@@ -1,0 +1,22 @@
+@startuml
+
+class Transaction {
+	-uid: serial
+	-trxTime: datetime
+	+trxName: text (название)
+	+trxSource: text (источник)
+	+trxSum: double (сумма)
+	+trxAmount: text (количество)
+	+category: UUID (категория)
+	+description: text (описание)
+}
+
+class Category {
+	-uid: UUID
+	+name: text (название)
+	+parent: uuid (родительская)
+}
+
+Transaction *-down- Category
+
+@enduml

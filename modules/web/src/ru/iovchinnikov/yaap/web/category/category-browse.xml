@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.iovchinnikov.yaap.web.category.CategoryBrowse"
+        focusComponent="categoriesTable"
+        lookupComponent="categoriesTable"
+        messagesPack="ru.iovchinnikov.yaap.web.category">
+    <dsContext>
+        <hierarchicalDatasource id="categoriesDs"
+                                class="ru.iovchinnikov.yaap.entity.Category"
+                                hierarchyProperty="parent"
+                                view="category-view">
+            <query>
+                <![CDATA[select e from yaap$Category e]]>
+            </query>
+        </hierarchicalDatasource>
+    </dsContext>
+    <dialogMode closeOnClickOutside="true"
+                forceDialog="true"
+                height="600"
+                width="400"/>
+    <layout spacing="true">
+        <treeTable id="categoriesTable"
+                   height="100%"
+                   width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rows datasource="categoriesDs"/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="categoriesTable.create"/>
+                <button id="editBtn"
+                        action="categoriesTable.edit"/>
+                <button id="removeBtn"
+                        action="categoriesTable.remove"/>
+            </buttonsPanel>
+        </treeTable>
+    </layout>
+</window>

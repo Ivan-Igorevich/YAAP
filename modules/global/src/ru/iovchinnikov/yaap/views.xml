@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="ru.iovchinnikov.yaap.entity.Category"
+          extends="_local"
+          name="category-view">
+        <property name="parent"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.iovchinnikov.yaap.entity.Transaction"
+          extends="_local"
+          name="transaction-view">
+        <property name="category"
+                  view="category-view"/>
+    </view>
+</views>
