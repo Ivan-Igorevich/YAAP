@@ -9,7 +9,7 @@
                                 hierarchyProperty="parent"
                                 view="catIncome-view">
             <query>
-                <![CDATA[select e from yaap$CatIncome e]]>
+                <![CDATA[select e from yaap$CatIncome e order by e.name]]>
             </query>
         </hierarchicalDatasource>
     </dsContext>

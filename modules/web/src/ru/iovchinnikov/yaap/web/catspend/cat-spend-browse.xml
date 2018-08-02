@@ -9,7 +9,7 @@
                                 hierarchyProperty="parent"
                                 view="catSpend-view">
             <query>
-                <![CDATA[select e from yaap$CatSpend e]]>
+                <![CDATA[select e from yaap$CatSpend e order by e.name]]>
             </query>
         </hierarchicalDatasource>
     </dsContext>
