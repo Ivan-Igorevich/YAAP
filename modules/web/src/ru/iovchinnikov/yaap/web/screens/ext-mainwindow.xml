@@ -28,8 +28,7 @@
                 </hbox>
                 <hbox id="appTitleBox"
                       spacing="true"
-                      stylename="c-sidemenu-title"
-                      width="100%">
+                      stylename="c-sidemenu-title">
                     <label id="appTitleLabel"
                            value="mainMsg://application.logoLabel"/>
                 </hbox>
@@ -50,13 +49,11 @@
                                            description="mainMsg://logoutBtnDescription"
                                            icon="app/images/exit.png"/>
                     </hbox>
-                    <main:timeZoneIndicator id="timeZoneIndicator"
-                                            width="100%"/>
+                    <main:timeZoneIndicator id="timeZoneIndicator"/>
                     <main:sideMenu id="sideMenu"
                                    sidePanel="sideMenuPanel"
                                    sidePanelToggleButton="mobileMenuButton"/>
-                    <main:ftsField id="ftsField"
-                                   width="100%"/>
+                    <main:ftsField id="ftsField"/>
                 </cssLayout>
             </cssLayout>
             <main:workArea id="workArea"
