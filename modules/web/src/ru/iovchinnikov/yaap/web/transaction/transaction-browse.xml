@@ -20,11 +20,6 @@
         <groupTable id="transactionsTable"
                     height="100%"
                     width="100%">
-            <actions>
-                <action id="create"/>
-                <action id="edit"/>
-                <action id="remove"/>
-            </actions>
             <columns>
                 <column id="name"/>
                 <column id="category"/>
@@ -35,15 +30,6 @@
             </columns>
             <rows datasource="transactionsDs"/>
             <rowsCount/>
-            <buttonsPanel id="buttonsPanel"
-                          alwaysVisible="true">
-                <button id="createBtn"
-                        action="transactionsTable.create"/>
-                <button id="editBtn"
-                        action="transactionsTable.edit"/>
-                <button id="removeBtn"
-                        action="transactionsTable.remove"/>
-            </buttonsPanel>
         </groupTable>
     </layout>
 </window>
