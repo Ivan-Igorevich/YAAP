@@ -24,7 +24,6 @@ public class Category extends StandardEntity {
     protected String name;
 
     @OnDeleteInverse(DeletePolicy.CASCADE)
-    @OnDelete(DeletePolicy.CASCADE)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PARENT_ID")
     protected Category parent;
