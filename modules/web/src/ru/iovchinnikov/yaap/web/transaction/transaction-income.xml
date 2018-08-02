@@ -10,7 +10,7 @@
                          class="ru.iovchinnikov.yaap.entity.Transaction"
                          view="transaction-view">
             <query>
-                <![CDATA[select e from yaap$Transaction e where e.amount > 0]]>
+                <![CDATA[select e from yaap$Transaction e where e.direction = true]]>
             </query>
         </groupDatasource>
     </dsContext>
@@ -31,7 +31,6 @@
                 <column id="category"/>
                 <column id="source"/>
                 <column id="total"/>
-                <column id="amount"/>
                 <column id="description"/>
             </columns>
             <rows datasource="transactionsDs"/>
