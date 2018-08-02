@@ -6,6 +6,9 @@
         <item screen="yaap$Transaction.income"/>
         <item screen="yaap$Transaction.spend"/>
     </menu>
-    <item insertBefore="administration"
-          screen="yaap$Category.browse"/>
+    <menu id="Categories"
+          insertBefore="administration">
+        <item screen="yaap$CatIncome.browse"/>
+        <item screen="yaap$CatSpend.browse"/>
+    </menu>
 </menu-config>

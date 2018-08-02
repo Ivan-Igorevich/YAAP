@@ -12,4 +12,16 @@
         <property name="category"
                   view="category-view"/>
     </view>
+    <view class="ru.iovchinnikov.yaap.entity.CatIncome"
+          extends="_local"
+          name="catIncome-view">
+        <property name="parent"
+                  view="_minimal"/>
+    </view>
+    <view class="ru.iovchinnikov.yaap.entity.CatSpend"
+          extends="_local"
+          name="catSpend-view">
+        <property name="parent"
+                  view="_minimal"/>
+    </view>
 </views>

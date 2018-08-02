@@ -14,4 +14,12 @@
             template="ru/iovchinnikov/yaap/web/transaction/transaction-income.xml"/>
     <screen id="yaap$Transaction.spend"
             template="ru/iovchinnikov/yaap/web/transaction/transaction-spend.xml"/>
+    <screen id="yaap$CatIncome.browse"
+            template="ru/iovchinnikov/yaap/web/catincome/cat-income-browse.xml"/>
+    <screen id="yaap$CatSpend.browse"
+            template="ru/iovchinnikov/yaap/web/catspend/cat-spend-browse.xml"/>
+    <screen id="yaap$CatIncome.edit"
+            template="ru/iovchinnikov/yaap/web/catincome/cat-income-edit.xml"/>
+    <screen id="yaap$CatSpend.edit"
+            template="ru/iovchinnikov/yaap/web/catspend/cat-spend-edit.xml"/>
 </screen-config>

@@ -10,6 +10,7 @@ create table YAAP_TRANSACTION (
     DELETED_BY varchar(50),
     --
     NAME varchar(255) not null,
+    DIRECTION boolean not null,
     CATEGORY_ID varchar(36),
     SOURCE varchar(255),
     TOTAL double precision not null,
@@ -29,6 +30,7 @@ create table YAAP_CATEGORY (
     UPDATED_BY varchar(50),
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
+    DTYPE varchar(100),
     --
     NAME varchar(255) not null,
     PARENT_ID varchar(36),

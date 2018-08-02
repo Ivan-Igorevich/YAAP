@@ -3,6 +3,7 @@
 class Transaction {
 	-uid: serial
 	-trxTime: datetime
+	-trxDir: boolean (направление)
 	+trxName: text (название)
 	+trxSource: text (источник)
 	+trxSum: double (сумма)

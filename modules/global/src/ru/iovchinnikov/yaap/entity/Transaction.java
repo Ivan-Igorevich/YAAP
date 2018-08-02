@@ -21,6 +21,10 @@ public class Transaction extends StandardEntity {
     @Column(name = "NAME", nullable = false)
     protected String name;
 
+    @NotNull
+    @Column(name = "DIRECTION", nullable = false)
+    protected Boolean direction = false;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CATEGORY_ID")
     protected Category category;
@@ -39,6 +43,15 @@ public class Transaction extends StandardEntity {
     @Lob
     @Column(name = "DESCRIPTION")
     protected String description;
+
+    public void setDirection(Boolean direction) {
+        this.direction = direction;
+    }
+
+    public Boolean getDirection() {
+        return direction;
+    }
+
 
     public void setCategory(Category category) {
         this.category = category;

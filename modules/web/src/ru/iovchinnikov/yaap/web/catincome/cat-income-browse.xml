@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.iovchinnikov.yaap.web.catincome.CatIncomeBrowse"
+        extends="ru/iovchinnikov/yaap/web/category/category-browse.xml"
+        messagesPack="ru.iovchinnikov.yaap.web.catincome">
+    <dsContext>
+        <hierarchicalDatasource id="catIncomesDs"
+                                class="ru.iovchinnikov.yaap.entity.CatIncome"
+                                hierarchyProperty="parent"
+                                view="catIncome-view">
+            <query>
+                <![CDATA[select e from yaap$CatIncome e]]>
+            </query>
+        </hierarchicalDatasource>
+    </dsContext>
+    <layout>
+        <treeTable id="categoriesTable">
+            <rows datasource="catIncomesDs"/>
+        </treeTable>
+    </layout>
+</window>

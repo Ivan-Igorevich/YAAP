@@ -20,7 +20,8 @@
                     datasource="transactionDs">
             <column width="250px">
                 <field property="name"/>
-                <field property="category"/>
+                <field id="fCat"
+                       property="category"/>
                 <field property="source"/>
                 <field id="fTotal"
                        property="total"/>

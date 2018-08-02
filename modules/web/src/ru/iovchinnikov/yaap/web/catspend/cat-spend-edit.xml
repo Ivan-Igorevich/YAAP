@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.iovchinnikov.yaap.web.catspend.CatSpendEdit"
+        extends="ru/iovchinnikov/yaap/web/category/category-edit.xml"
+        messagesPack="ru.iovchinnikov.yaap.web.catspend">
+    <dsContext>
+        <datasource id="categoryDs"
+                    class="ru.iovchinnikov.yaap.entity.CatSpend"
+                    view="catSpend-view"/>
+    </dsContext>
+    <layout/>
+</window>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.iovchinnikov.yaap.web.catspend.CatSpendBrowse"
+        extends="ru/iovchinnikov/yaap/web/category/category-browse.xml"
+        messagesPack="ru.iovchinnikov.yaap.web.catspend">
+    <dsContext>
+        <hierarchicalDatasource id="catSpendsDs"
+                                class="ru.iovchinnikov.yaap.entity.CatSpend"
+                                hierarchyProperty="parent"
+                                view="catSpend-view">
+            <query>
+                <![CDATA[select e from yaap$CatSpend e]]>
+            </query>
+        </hierarchicalDatasource>
+    </dsContext>
+    <layout>
+        <treeTable id="categoriesTable">
+            <rows datasource="catSpendsDs"/>
+        </treeTable>
+    </layout>
+</window>

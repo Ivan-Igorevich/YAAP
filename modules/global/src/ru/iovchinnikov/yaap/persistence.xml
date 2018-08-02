@@ -5,5 +5,7 @@
                       transaction-type="RESOURCE_LOCAL">
         <class>ru.iovchinnikov.yaap.entity.Transaction</class>
         <class>ru.iovchinnikov.yaap.entity.Category</class>
+        <class>ru.iovchinnikov.yaap.entity.CatIncome</class>
+        <class>ru.iovchinnikov.yaap.entity.CatSpend</class>
     </persistence-unit>
 </persistence>
