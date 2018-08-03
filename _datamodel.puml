@@ -4,6 +4,7 @@ class Transaction {
 	-uid: serial
 	-trxTime: datetime
 	-trxDir: boolean (направление)
+	+trxDate: date (дата)
 	+trxName: text (название)
 	+trxSource: text (источник)
 	+trxSum: double (сумма)
