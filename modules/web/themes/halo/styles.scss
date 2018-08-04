@@ -8,4 +8,14 @@
   @include app_components;
   
   @include ru_iovchinnikov_yaap-halo-ext;
+
+  .spend {
+    background-color: #FFEEEE;
+  }
+
+  .income {
+    font-weight: bold;
+    background-color: #EEFFEE;
+  }
+
 }
