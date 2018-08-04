@@ -10,6 +10,7 @@ create table YAAP_TRANSACTION (
     DELETED_BY varchar(50),
     --
     NAME varchar(255) not null,
+    DATE_ date not null,
     DIRECTION boolean not null,
     CATEGORY_ID varchar(36),
     SOURCE varchar(255),

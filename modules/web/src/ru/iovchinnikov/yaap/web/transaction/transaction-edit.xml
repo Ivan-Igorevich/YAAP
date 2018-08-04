@@ -19,6 +19,8 @@
         <fieldGroup id="mainGroup"
                     datasource="transactionDs">
             <column width="250px">
+                <field id="fDate"
+                       property="date"/>
                 <field property="name"/>
                 <field id="fCat"
                        property="category"/>
@@ -28,7 +30,7 @@
                 <field id="fAmount"
                        property="amount"/>
                 <field property="description"
-                       rows="5"/>
+                       rows="4"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

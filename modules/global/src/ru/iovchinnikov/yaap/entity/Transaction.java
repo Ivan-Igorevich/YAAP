@@ -10,6 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @NamePattern("%s %s|name,id")
 @Table(name = "YAAP_TRANSACTION")
@@ -20,6 +23,11 @@ public class Transaction extends StandardEntity {
     @NotNull
     @Column(name = "NAME", nullable = false)
     protected String name;
+
+    @Temporal(TemporalType.DATE)
+    @NotNull
+    @Column(name = "DATE_", nullable = false)
+    protected Date date;
 
     @NotNull
     @Column(name = "DIRECTION", nullable = false)
@@ -43,6 +51,15 @@ public class Transaction extends StandardEntity {
     @Lob
     @Column(name = "DESCRIPTION")
     protected String description;
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
 
     public void setDirection(Boolean direction) {
         this.direction = direction;
