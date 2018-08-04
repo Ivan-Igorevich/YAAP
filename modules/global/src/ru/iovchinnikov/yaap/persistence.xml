@@ -7,5 +7,7 @@
         <class>ru.iovchinnikov.yaap.entity.Category</class>
         <class>ru.iovchinnikov.yaap.entity.CatIncome</class>
         <class>ru.iovchinnikov.yaap.entity.CatSpend</class>
+        <class>ru.iovchinnikov.yaap.entity.Account</class>
+        <class>ru.iovchinnikov.yaap.entity.Balance</class>
     </persistence-unit>
 </persistence>

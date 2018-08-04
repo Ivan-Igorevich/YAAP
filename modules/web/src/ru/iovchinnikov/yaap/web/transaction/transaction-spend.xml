@@ -40,6 +40,9 @@
                           alwaysVisible="true">
                 <button id="createBtn"
                         action="transactionsTable.create"/>
+                <button id="btnAddCheck"
+                        icon="FILES_O"
+                        invoke="onBtnAddCheckClick"/>
                 <button id="editBtn"
                         action="transactionsTable.edit"/>
                 <button id="removeBtn"

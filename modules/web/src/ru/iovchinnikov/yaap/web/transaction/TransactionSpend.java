@@ -15,4 +15,7 @@ public class TransactionSpend extends AbstractLookup {
         super.init(params);
         transactionsTableCreate.setInitialValues(ParamsMap.of("direction", false));
     }
+
+    public void onBtnAddCheckClick() {
+    }
 }

@@ -2,9 +2,9 @@
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="Transactions"
           insertBefore="administration">
-        <item screen="yaap$Transaction.browse"/>
-        <item screen="yaap$Transaction.income"/>
         <item screen="yaap$Transaction.spend"/>
+        <item screen="yaap$Transaction.income"/>
+        <item screen="yaap$Transaction.browse"/>
     </menu>
     <menu id="Categories"
           insertBefore="administration">
