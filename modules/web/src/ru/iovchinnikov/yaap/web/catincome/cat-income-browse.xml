@@ -15,6 +15,10 @@
     </dsContext>
     <layout>
         <treeTable id="categoriesTable">
+            <actions>
+                <action id="create"
+                        caption="msg://catCreate"/>
+            </actions>
             <rows datasource="catIncomesDs"/>
         </treeTable>
     </layout>

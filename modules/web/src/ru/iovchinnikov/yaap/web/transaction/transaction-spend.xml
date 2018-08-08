@@ -21,14 +21,12 @@
                     height="100%"
                     width="100%">
             <actions>
-                <action id="create"
-                        caption="msg://actionCreate"/>
                 <action id="edit"/>
                 <action id="remove"/>
             </actions>
             <columns>
-                <column id="name"/>
                 <column id="category"/>
+                <column id="name"/>
                 <column id="source"/>
                 <column id="total"/>
                 <column id="amount"/>
@@ -38,9 +36,8 @@
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn"
-                        action="transactionsTable.create"/>
                 <button id="btnAddCheck"
+                        caption="msg://addCheck"
                         icon="FILES_O"
                         invoke="onBtnAddCheckClick"/>
                 <button id="editBtn"

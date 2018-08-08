@@ -17,7 +17,7 @@ buildscript {
     }
 }
 
-def modulePrefix = 'app'
+def modulePrefix = 'yaap'
 
 def globalModule = project(":${modulePrefix}-global")
 def coreModule = project(":${modulePrefix}-core")
@@ -38,6 +38,10 @@ cuba {
     }
     tomcat {
         dir = "$project.rootDir/deploy/tomcat"
+        port = 8088
+    }
+    ide {
+        vcs = 'Git'
     }
 }
 

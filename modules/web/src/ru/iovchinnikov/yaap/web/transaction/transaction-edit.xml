@@ -9,6 +9,18 @@
         <datasource id="transactionDs"
                     class="ru.iovchinnikov.yaap.entity.Transaction"
                     view="transaction-view"/>
+        <collectionDatasource id="catIncomesDs"
+                              class="ru.iovchinnikov.yaap.entity.CatIncome">
+            <query>
+                <![CDATA[select e from yaap$CatIncome e]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="catSpendsDs"
+                              class="ru.iovchinnikov.yaap.entity.CatSpend">
+            <query>
+                <![CDATA[select e from yaap$CatSpend e]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <dialogMode closeOnClickOutside="true"
                 forceDialog="true"
@@ -20,17 +32,20 @@
                     datasource="transactionDs">
             <column width="250px">
                 <field id="fDate"
-                       property="date"/>
-                <field property="name"/>
+                       property="date" />
+                <field id="fName"
+                       property="name"
+                       visible="false"/>
                 <field id="fCat"
-                       property="category"/>
-                <field property="source"/>
+                       property="category" />
+                <field property="source" />
                 <field id="fTotal"
-                       property="total"/>
+                       property="total" />
                 <field id="fAmount"
-                       property="amount"/>
+                       property="amount"
+                       visible="false"/>
                 <field property="description"
-                       rows="4"/>
+                       rows="5" />
             </column>
         </fieldGroup>
         <frame id="windowActions"
