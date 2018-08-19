@@ -11,3 +11,4 @@ test-run
 /deploy/
 /gradle/
 /modules/core/build/
+/modules/core/db/update/

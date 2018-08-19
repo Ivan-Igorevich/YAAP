@@ -15,8 +15,10 @@ create table YAAP_TRANSACTION (
     CATEGORY_ID varchar(36),
     SOURCE varchar(255),
     TOTAL double precision not null,
+    VOLUME double precision,
     AMOUNT double precision not null,
     DESCRIPTION longvarchar,
+    PERIOD_ID varchar(36),
     --
     primary key (ID)
 )^
@@ -51,13 +53,15 @@ create table YAAP_ACCOUNT (
     DELETED_BY varchar(50),
     --
     NAME varchar(255),
+    CURRENT_PERIOD_ID varchar(36),
     CURRENCY varchar(255),
     --
     primary key (ID)
 )^
 -- end YAAP_ACCOUNT
--- begin YAAP_BALANCE
-create table YAAP_BALANCE (
+
+-- begin YAAP_PERIOD
+create table YAAP_PERIOD (
     ID varchar(36) not null,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -67,8 +71,12 @@ create table YAAP_BALANCE (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    CURRENT_ double precision not null,
+    BALANCE_START double precision not null,
+    BALANCE_END double precision not null,
+    DATE_START timestamp not null,
+    DATE_END timestamp,
+    ACCOUNT_ID varchar(36),
     --
     primary key (ID)
 )^
--- end YAAP_BALANCE
+-- end YAAP_PERIOD

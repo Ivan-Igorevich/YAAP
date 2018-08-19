@@ -1,24 +1,51 @@
 @startuml
 
+class Account {
+	+name: String (название)
+	+currency: String (валюта)
+	+currentPeriod: Period (текущий период)
+	+archive: List<Period> (архив периодов)
+}
+
+class Period {
+	+trxs: List<Transaction> (транзакции)
+	+balanceStart: double (начальный баланс)
+	+balanceEnd: double (конечный баланс)
+	+dateStart: DateTime (начало периода)
+	+dateEnd: DateTime (конец периода)
+	+account: Account (ответное поле)
+}
+
 class Transaction {
-	-uid: serial
-	-trxTime: datetime
-	-trxDir: boolean (направление)
-	+trxDate: date (дата)
-	+trxName: text (название)
-	+trxSource: text (источник)
-	+trxSum: double (сумма)
-	+trxAmount: text (количество)
-	+category: UUID (категория)
-	+description: text (описание)
+	+name: String (название)
+	+date: DateTime (дата)
+	+dir: boolean (направление)
+	+category: Category (категория)
+	+source: String (источник)
+	+total: double (сумма)
+	+volume: double (объём гр/мл.)
+	+amount: double (количество шт.)
+	+description: String (описание)
+	+period: Period (ответное поле)
 }
 
 class Category {
-	-uid: UUID
 	+name: text (название)
 	+parent: uuid (родительская)
+
+
+class CatSpend {
+
 }
 
-Transaction *-down- Category
+class CatIncome {
+
+}
+
+Account *-down- Period : has one current and a list of >
+Period *-down- Transaction : has a list of >
+Transaction *-right- Category : belongs >
+Category <|-- CatSpend : < extends
+Category <|-- CatIncome : < extends
 
 @enduml
