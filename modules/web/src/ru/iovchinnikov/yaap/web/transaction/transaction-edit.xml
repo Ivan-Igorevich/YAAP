@@ -32,20 +32,20 @@
                     datasource="transactionDs">
             <column width="250px">
                 <field id="fDate"
-                       property="date" />
+                       property="date"/>
                 <field id="fName"
                        property="name"
                        visible="false"/>
                 <field id="fCat"
-                       property="category" />
-                <field property="source" />
+                       property="category"/>
+                <field property="source"/>
                 <field id="fTotal"
-                       property="total" />
+                       property="total"/>
                 <field id="fAmount"
                        property="amount"
                        visible="false"/>
                 <field property="description"
-                       rows="5" />
+                       rows="5"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

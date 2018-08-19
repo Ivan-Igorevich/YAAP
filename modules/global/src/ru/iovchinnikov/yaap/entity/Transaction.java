@@ -44,6 +44,9 @@ public class Transaction extends StandardEntity {
     @Column(name = "TOTAL", nullable = false)
     protected Double total;
 
+    @Column(name = "VOLUME")
+    protected Double volume;
+
     @NotNull
     @Column(name = "AMOUNT", nullable = false)
     protected Double amount;
@@ -51,6 +54,28 @@ public class Transaction extends StandardEntity {
     @Lob
     @Column(name = "DESCRIPTION")
     protected String description;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PERIOD_ID")
+    protected Period period;
+
+    public void setVolume(Double volume) {
+        this.volume = volume;
+    }
+
+    public Double getVolume() {
+        return volume;
+    }
+
+
+    public void setPeriod(Period period) {
+        this.period = period;
+    }
+
+    public Period getPeriod() {
+        return period;
+    }
+
 
     public void setDate(Date date) {
         this.date = date;

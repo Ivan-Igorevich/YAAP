@@ -22,4 +22,6 @@
             template="ru/iovchinnikov/yaap/web/catincome/cat-income-edit.xml"/>
     <screen id="yaap$CatSpend.edit"
             template="ru/iovchinnikov/yaap/web/catspend/cat-spend-edit.xml"/>
+    <screen id="oneCheckEditor"
+            template="ru/iovchinnikov/yaap/web/screens/oneCheckEditor.xml"/>
 </screen-config>

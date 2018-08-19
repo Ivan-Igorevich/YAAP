@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="ru.iovchinnikov.yaap.web.screens.Onecheckeditor"
+        messagesPack="ru.iovchinnikov.yaap.web.screens">
+    <dsContext>
+        <hierarchicalDatasource id="catSpendsDs"
+                                class="ru.iovchinnikov.yaap.entity.CatSpend"
+                                hierarchyProperty="parent"
+                                view="catSpend-view">
+            <query>
+                <![CDATA[select e from yaap$CatSpend e]]>
+            </query>
+        </hierarchicalDatasource>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="800"
+                width="600"/>
+    <layout expand="gbMain">
+        <label id="lblCaption"
+               stylename="h1"
+               value="msg://lblCpt"/>
+        <groupBox id="gbMain"
+                  spacing="true">
+            <grid id="gridMain"
+                  spacing="true"
+                  width="100%">
+                <columns>
+                    <column flex="0.2"/>
+                    <column flex="0.5"/>
+                    <column flex="0.1"/>
+                    <column flex="0.1"/>
+                    <column flex="0.1"/>
+                </columns>
+                <rows>
+                    <row>
+                        <label id="lblDate"
+                               value="msg://checkDate"
+                               width="100%"/>
+                        <datePicker id="dateBuy"
+                                    width="100%"/>
+                    </row>
+                    <row>
+                        <label id="lblCategory"
+                               value="msg://lblCategory"
+                               width="100%"/>
+                        <pickerField colspan="4"
+                                     metaClass="yaap$CatSpend"
+                                     width="100%"/>
+                    </row>
+                    <row>
+                        <label id="lblCompany"
+                               value="msg://lblCompany"
+                               width="100%"/>
+                        <textField colspan="4"
+                                   width="100%"/>
+                    </row>
+                    <row>
+                        <label id="lblDescription"
+                               value="msg://lblDescription"
+                               width="100%"/>
+                        <textArea colspan="4"
+                                  rows="2"
+                                  width="100%"/>
+                    </row>
+                    <row>
+                        <label id="lblEnum"
+                               value="msg://lblEnum"
+                               width="100%"/>
+                        <label id="lblName"
+                               value="msg://lblName"
+                               width="100%"/>
+                        <label id="lblAmount"
+                               value="msg://lblAmount"
+                               width="100%"/>
+                        <label id="lblVolume"
+                               value="msg://lblVolume"
+                               width="100%"/>
+                        <label id="lblTotal"
+                               value="msg://lblTotal"
+                               width="100%"/>
+                    </row>
+                    <row>
+                        <label id="num"
+                               value="1"
+                               width="100%"/>
+                        <textField width="100%"/>
+                        <textField width="100%"/>
+                        <textField width="100%"/>
+                        <textField width="100%"/>
+                    </row>
+                    <row>
+                        <button id="btnAddRow"
+                                caption="msg://btnAddRow"
+                                colspan="2"
+                                width="100%"/>
+                    </row>
+                </rows>
+            </grid>
+        </groupBox>
+    </layout>
+</window>

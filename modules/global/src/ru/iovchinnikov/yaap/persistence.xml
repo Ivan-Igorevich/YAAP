@@ -8,6 +8,6 @@
         <class>ru.iovchinnikov.yaap.entity.CatIncome</class>
         <class>ru.iovchinnikov.yaap.entity.CatSpend</class>
         <class>ru.iovchinnikov.yaap.entity.Account</class>
-        <class>ru.iovchinnikov.yaap.entity.Balance</class>
+        <class>ru.iovchinnikov.yaap.entity.Period</class>
     </persistence-unit>
 </persistence>
