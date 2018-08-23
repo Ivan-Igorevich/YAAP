@@ -6,8 +6,6 @@
             template="ru/iovchinnikov/yaap/web/category/category-edit.xml"/>
     <screen id="yaap$Transaction.browse"
             template="ru/iovchinnikov/yaap/web/transaction/transaction-browse.xml"/>
-    <screen id="yaap$Transaction.edit"
-            template="ru/iovchinnikov/yaap/web/transaction/transaction-edit.xml"/>
     <screen id="mainWindow"
             template="ru/iovchinnikov/yaap/web/screens/ext-mainwindow.xml"/>
     <screen id="yaap$Transaction.income"
@@ -24,4 +22,10 @@
             template="ru/iovchinnikov/yaap/web/catspend/cat-spend-edit.xml"/>
     <screen id="oneCheckEditor"
             template="ru/iovchinnikov/yaap/web/screens/oneCheckEditor.xml"/>
+    <screen id="yaap$Company.browse"
+            template="ru/iovchinnikov/yaap/web/company/company-browse.xml"/>
+    <screen id="yaap$Company.edit"
+            template="ru/iovchinnikov/yaap/web/company/company-edit.xml"/>
+    <screen id="yaap$Transaction.edit"
+            template="ru/iovchinnikov/yaap/web/transaction/transaction-edit.xml"/>
 </screen-config>

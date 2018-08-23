@@ -11,6 +11,10 @@
           name="transaction-view">
         <property name="category"
                   view="category-view"/>
+        <property name="name"
+                  view="_minimal"/>
+        <property name="source"
+                  view="_minimal"/>
     </view>
     <view class="ru.iovchinnikov.yaap.entity.CatIncome"
           extends="_local"

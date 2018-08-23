@@ -12,6 +12,13 @@
                 <![CDATA[select e from yaap$CatSpend e]]>
             </query>
         </hierarchicalDatasource>
+        <collectionDatasource id="dsCompanies"
+                              class="ru.iovchinnikov.yaap.entity.Company"
+                              view="_local">
+            <query>
+                <![CDATA[select e from yaap$Company e]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <dialogMode forceDialog="true"
                 height="800"
@@ -52,8 +59,9 @@
                         <label id="lblCompany"
                                value="msg://lblCompany"
                                width="100%"/>
-                        <textField colspan="4"
-                                   width="100%"/>
+                        <lookupPickerField colspan="4"
+                                           optionsDatasource="dsCompanies"
+                                           width="100%"/>
                     </row>
                     <row>
                         <label id="lblDescription"

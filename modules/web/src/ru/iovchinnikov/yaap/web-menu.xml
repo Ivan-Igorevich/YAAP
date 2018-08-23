@@ -11,4 +11,6 @@
         <item screen="yaap$CatIncome.browse"/>
         <item screen="yaap$CatSpend.browse"/>
     </menu>
+    <item insertBefore="administration"
+          screen="yaap$Company.browse"/>
 </menu-config>

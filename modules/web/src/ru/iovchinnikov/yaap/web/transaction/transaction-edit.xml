@@ -9,43 +9,54 @@
         <datasource id="transactionDs"
                     class="ru.iovchinnikov.yaap.entity.Transaction"
                     view="transaction-view"/>
-        <collectionDatasource id="catIncomesDs"
-                              class="ru.iovchinnikov.yaap.entity.CatIncome">
+        <collectionDatasource id="sourcesDs"
+                              class="ru.iovchinnikov.yaap.entity.Company"
+                              view="_minimal">
             <query>
-                <![CDATA[select e from yaap$CatIncome e]]>
-            </query>
-        </collectionDatasource>
-        <collectionDatasource id="catSpendsDs"
-                              class="ru.iovchinnikov.yaap.entity.CatSpend">
-            <query>
-                <![CDATA[select e from yaap$CatSpend e]]>
+                <![CDATA[select e from yaap$Company e]]>
             </query>
         </collectionDatasource>
     </dsContext>
-    <dialogMode closeOnClickOutside="true"
-                forceDialog="true"
-                height="400"
-                width="400"/>
+    <dialogMode height="600"
+                width="400"
+                forceDialog="true"/>
     <layout expand="windowActions"
             spacing="true">
+        <hbox>
+            <label value="msg://source" />
+            <lookupPickerField id="lpfSrc"
+                               datasource="transactionDs"
+                               optionsDatasource="sourcesDs"
+                               property="source"/>
+        </hbox>
         <fieldGroup id="mainGroup"
                     datasource="transactionDs">
             <column width="250px">
-                <field id="fDate"
-                       property="date"/>
                 <field id="fName"
                        property="name"
                        visible="false"/>
+                <field id="fDate"
+                       property="date"/>
+                <field id="fDir"
+                       property="direction"
+                       visible="false"/>
                 <field id="fCat"
                        property="category"/>
-                <field property="source"/>
-                <field id="fTotal"
+                <field id="fSrc"
+                       optionsDatasource="sourcesDs"
+                       property="source"
+                       visible="false"/>
+                <field id="fTtl"
                        property="total"/>
-                <field id="fAmount"
+                <field id="fVol"
+                       property="volume"
+                       visible="false"/>
+                <field id="fAmnt"
                        property="amount"
                        visible="false"/>
-                <field property="description"
-                       rows="5"/>
+                <field id="fDesc"
+                       property="description"
+                       rows="2"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

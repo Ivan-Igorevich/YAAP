@@ -1,11 +1,11 @@
 package ru.iovchinnikov.yaap.web.transaction;
 
+import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.cuba.core.global.TimeSource;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.data.CollectionDatasource;
-import ru.iovchinnikov.yaap.entity.CatIncome;
-import ru.iovchinnikov.yaap.entity.CatSpend;
-import ru.iovchinnikov.yaap.entity.Transaction;
+import ru.iovchinnikov.yaap.entity.*;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,11 +15,14 @@ import java.util.UUID;
 
 public class TransactionEdit extends AbstractEditor<Transaction> {
     @Inject private TimeSource timeSource;
-    @Named("mainGroup.fTotal") private Field fTotal;
-    @Named("mainGroup.fAmount") private Field fAmount;
+    @Inject private Metadata metadata;
+    @Inject private DataManager dataManager;
+    @Named("mainGroup.fTtl") private Field fTtl;
+    @Named("mainGroup.fAmnt") private Field fAmnt;
     @Named("mainGroup.fCat") private PickerField fCat;
     @Named("mainGroup.fDate") private Field fDate;
     @Named("mainGroup.fName") private Field fName;
+    @Named("mainGroup.fSrc") private Field fSrc;
 
     @Override
     protected void initNewItem(Transaction item) {
@@ -30,7 +33,7 @@ public class TransactionEdit extends AbstractEditor<Transaction> {
     @Override
     public void init(Map<String, Object> params) {
         super.init(params);
-        fTotal.addValidator(value -> nonZero((double) value));
+        fTtl.addValidator(value -> nonZero((double) value));
         fDate.addValidator(value -> isEarlier((Date) value));
         fCat.getLookupAction().setLookupScreen("yaap$CatIncome.browse");
     }
@@ -38,8 +41,8 @@ public class TransactionEdit extends AbstractEditor<Transaction> {
     @Override
     public void ready() {
         super.ready();
-        fAmount.setValue(1);
-        fName.setValue(" ");
+        fAmnt.setValue(1);
+        fName.setValue(null);
     }
 
     private void nonZero(double value) throws ValidationException {

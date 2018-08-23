@@ -9,11 +9,11 @@ create table YAAP_TRANSACTION (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    NAME varchar(255) not null,
+    NAME_ID varchar(36),
     DATE_ date not null,
     DIRECTION boolean not null,
     CATEGORY_ID varchar(36),
-    SOURCE varchar(255),
+    SOURCE_ID varchar(36),
     TOTAL double precision not null,
     VOLUME double precision,
     AMOUNT double precision not null,
@@ -80,3 +80,35 @@ create table YAAP_PERIOD (
     primary key (ID)
 )^
 -- end YAAP_PERIOD
+-- begin YAAP_COMPANY
+create table YAAP_COMPANY (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(255) not null,
+    --
+    primary key (ID)
+)^
+-- end YAAP_COMPANY
+-- begin YAAP_PRODUCT
+create table YAAP_PRODUCT (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(255),
+    --
+    primary key (ID)
+)^
+-- end YAAP_PRODUCT

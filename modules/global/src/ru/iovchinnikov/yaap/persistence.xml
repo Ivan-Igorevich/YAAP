@@ -9,5 +9,7 @@
         <class>ru.iovchinnikov.yaap.entity.CatSpend</class>
         <class>ru.iovchinnikov.yaap.entity.Account</class>
         <class>ru.iovchinnikov.yaap.entity.Period</class>
+        <class>ru.iovchinnikov.yaap.entity.Company</class>
+        <class>ru.iovchinnikov.yaap.entity.Product</class>
     </persistence-unit>
 </persistence>

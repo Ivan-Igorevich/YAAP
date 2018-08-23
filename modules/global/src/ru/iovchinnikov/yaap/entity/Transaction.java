@@ -20,9 +20,9 @@ import javax.persistence.TemporalType;
 public class Transaction extends StandardEntity {
     private static final long serialVersionUID = -1609485236642275921L;
 
-    @NotNull
-    @Column(name = "NAME", nullable = false)
-    protected String name;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "NAME_ID")
+    protected Product name;
 
     @Temporal(TemporalType.DATE)
     @NotNull
@@ -37,8 +37,9 @@ public class Transaction extends StandardEntity {
     @JoinColumn(name = "CATEGORY_ID")
     protected Category category;
 
-    @Column(name = "SOURCE")
-    protected String source;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "SOURCE_ID")
+    protected Company source;
 
     @NotNull
     @Column(name = "TOTAL", nullable = false)
@@ -58,6 +59,24 @@ public class Transaction extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PERIOD_ID")
     protected Period period;
+
+    public Product getName() {
+        return name;
+    }
+
+    public void setName(Product name) {
+        this.name = name;
+    }
+
+
+    public Company getSource() {
+        return source;
+    }
+
+    public void setSource(Company source) {
+        this.source = source;
+    }
+
 
     public void setVolume(Double volume) {
         this.volume = volume;
@@ -103,22 +122,6 @@ public class Transaction extends StandardEntity {
         return category;
     }
 
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
-    public String getSource() {
-        return source;
-    }
 
     public void setTotal(Double total) {
         this.total = total;
