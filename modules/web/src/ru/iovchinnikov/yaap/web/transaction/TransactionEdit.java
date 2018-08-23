@@ -15,14 +15,11 @@ import java.util.UUID;
 
 public class TransactionEdit extends AbstractEditor<Transaction> {
     @Inject private TimeSource timeSource;
-    @Inject private Metadata metadata;
-    @Inject private DataManager dataManager;
     @Named("mainGroup.fTtl") private Field fTtl;
     @Named("mainGroup.fAmnt") private Field fAmnt;
     @Named("mainGroup.fCat") private PickerField fCat;
     @Named("mainGroup.fDate") private Field fDate;
     @Named("mainGroup.fName") private Field fName;
-    @Named("mainGroup.fSrc") private Field fSrc;
 
     @Override
     protected void initNewItem(Transaction item) {

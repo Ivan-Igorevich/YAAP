@@ -89,22 +89,35 @@
                                width="100%"/>
                     </row>
                     <row>
-                        <label id="num"
+                        <label id="lbl_1"
                                value="1"
-                               width="100%"/>
-                        <textField width="100%"/>
+                               width="100%"
+                               align="MIDDLE_LEFT"/>
+                        <lookupPickerField width="100%"/>
                         <textField width="100%"/>
                         <textField width="100%"/>
                         <textField width="100%"/>
                     </row>
                     <row>
-                        <button id="btnAddRow"
-                                caption="msg://btnAddRow"
-                                colspan="2"
-                                width="100%"/>
+                        <label id="lblSpacing"
+                               width="100%"/>
+                        <buttonsPanel width="100%">
+                            <button id="btnAddRow"
+                                    caption="msg://btnAddRow"
+                                    invoke="btnAddClick"
+                                    width="100%"/>
+                        </buttonsPanel>
                     </row>
                 </rows>
             </grid>
+            <buttonsPanel align="BOTTOM_LEFT">
+                <button id="btnOk"
+                        caption="msg://btnSave"
+                        invoke="btnOkClick"/>
+                <button id="btnCancel"
+                        caption="msg://btnCancel"
+                        invoke="btnCancelClick"/>
+            </buttonsPanel>
         </groupBox>
     </layout>
 </window>
