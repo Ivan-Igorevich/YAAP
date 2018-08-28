@@ -7,14 +7,11 @@ import com.haulmont.cuba.gui.xml.layout.ComponentsFactory;
 import javax.inject.Inject;
 import java.util.Date;
 import java.util.Map;
+import java.util.Objects;
 
 public class Onecheckeditor extends AbstractWindow {
-    private static final int POS_LABEL = 0;
-    private static final int POS_NAME = 1;
+    private static final int POS_LINE = 0;
     private static final int POS_BTTN = 1;
-    private static final int POS_AMNT = 2;
-    private static final int POS_VOLM = 3;
-    private static final int POS_TOTL = 4;
 
 
     @Inject private TimeSource timeSource;
@@ -32,6 +29,22 @@ public class Onecheckeditor extends AbstractWindow {
             throw new ValidationException(getMessage("onlyPast"));
     }
 
+    @Override
+    public void ready() {
+        super.ready();
+        int rowNumber = gridMain.getRows();
+
+        gridMain.setRows(rowNumber + 1);
+        ButtonsPanel btnAddPanel = getButtonAdd(rowNumber);
+        Frmcheckline oneLine = (Frmcheckline) gridMain.getComponent(POS_LINE, rowNumber - 2);
+        Frmcheckline newLine;
+        oneLine.setId(oneLine.getId() + "1");
+        gridMain.add(oneLine, POS_LINE, rowNumber - 1);
+        gridMain.add(componentsFactory.createComponent(Label.class), POS_LINE, rowNumber);
+        gridMain.add(btnAddPanel, POS_BTTN, rowNumber);
+
+    }
+
     public void btnCancelClick() {
         this.close("cancelled");
     }
@@ -40,23 +53,11 @@ public class Onecheckeditor extends AbstractWindow {
     }
 
     public void btnAddClick() {
-        int rowNumber = gridMain.getRows();
-        // prepare next number to insert to a new label
-        int inLabelNumber = Integer.parseInt(((Label) gridMain.getComponent(POS_LABEL, rowNumber - 2)).getRawValue()) + 1;
-        ButtonsPanel btnAddPanel = (ButtonsPanel) gridMain.getComponent(POS_BTTN, rowNumber - 1);
-        gridMain.remove(btnAddPanel);
-        // insert a row as last, set previous(empty) label value to number, prepare label dummy for new line
-        gridMain.setRows(rowNumber + 1);
-        Label emptyLabel = enumLabelsWork(rowNumber, inLabelNumber);
-        gridMain.add(emptyLabel, POS_LABEL, rowNumber);
-        gridMain.add(btnAddPanel, POS_BTTN, rowNumber);
     }
 
-    private Label enumLabelsWork(int rowNumber, int inLabelNumber) {
-        Label enumerator = (Label) gridMain.getComponent(POS_LABEL, rowNumber - 1);
-        enumerator.setValue(inLabelNumber);
-        enumerator.setWidth("100%");
-        enumerator.setId("lbl_" + inLabelNumber);
-        return componentsFactory.createComponent(Label.class);
+    private ButtonsPanel getButtonAdd(int rowNumber) {
+        ButtonsPanel btnAddPanel = (ButtonsPanel) gridMain.getComponent(POS_BTTN, rowNumber - 1);
+        gridMain.remove(btnAddPanel);
+        return btnAddPanel;
     }
 }

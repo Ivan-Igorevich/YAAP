@@ -28,4 +28,10 @@
             template="ru/iovchinnikov/yaap/web/company/company-edit.xml"/>
     <screen id="yaap$Transaction.edit"
             template="ru/iovchinnikov/yaap/web/transaction/transaction-edit.xml"/>
+    <screen id="yaap$Product.browse"
+            template="ru/iovchinnikov/yaap/web/product/product-browse.xml"/>
+    <screen id="yaap$Product.edit"
+            template="ru/iovchinnikov/yaap/web/product/product-edit.xml"/>
+    <screen id="yaap$frmCheckLine"
+            template="ru/iovchinnikov/yaap/web/screens/frmCheckLine.xml"/>
 </screen-config>

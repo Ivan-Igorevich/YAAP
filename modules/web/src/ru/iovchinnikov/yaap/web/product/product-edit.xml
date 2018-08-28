@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
         caption="msg://editorCaption"
-        class="ru.iovchinnikov.yaap.web.company.CompanyEdit"
-        datasource="companyDs"
+        class="ru.iovchinnikov.yaap.web.product.ProductEdit"
+        datasource="productDs"
         focusComponent="fieldGroup"
-        messagesPack="ru.iovchinnikov.yaap.web.company">
+        messagesPack="ru.iovchinnikov.yaap.web.product">
     <dsContext>
-        <datasource id="companyDs"
-                    class="ru.iovchinnikov.yaap.entity.Company"
+        <datasource id="productDs"
+                    class="ru.iovchinnikov.yaap.entity.Product"
                     view="_local"/>
     </dsContext>
     <dialogMode forceDialog="true"
@@ -16,7 +16,7 @@
     <layout expand="windowActions"
             spacing="true">
         <fieldGroup id="fieldGroup"
-                    datasource="companyDs"
+                    datasource="productDs"
                     width="100%">
             <column width="100%">
                 <field property="name"/>

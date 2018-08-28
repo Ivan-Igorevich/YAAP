@@ -19,6 +19,13 @@
                 <![CDATA[select e from yaap$Company e]]>
             </query>
         </collectionDatasource>
+        <collectionDatasource id="dsProducts"
+                              class="ru.iovchinnikov.yaap.entity.Product"
+                              view="_local">
+            <query>
+                <![CDATA[select e from yaap$Product e]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <dialogMode forceDialog="true"
                 height="800"
@@ -88,15 +95,11 @@
                                value="msg://lblTotal"
                                width="100%"/>
                     </row>
-                    <row>
-                        <label id="lbl_1"
-                               value="1"
-                               width="100%"
-                               align="MIDDLE_LEFT"/>
-                        <lookupPickerField width="100%"/>
-                        <textField width="100%"/>
-                        <textField width="100%"/>
-                        <textField width="100%"/>
+                    <row id="rowLine0">
+                        <frame id="frmLine0"
+                               colspan="5"
+                               screen="yaap$frmCheckLine"
+                               width="100%"/>
                     </row>
                     <row>
                         <label id="lblSpacing"

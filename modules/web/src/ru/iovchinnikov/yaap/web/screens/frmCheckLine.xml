@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="ru.iovchinnikov.yaap.web.screens.Frmcheckline"
+        messagesPack="ru.iovchinnikov.yaap.web.screens">
+    <dsContext>
+        <collectionDatasource id="dsProducts"
+                              class="ru.iovchinnikov.yaap.entity.Product"
+                              view="_local">
+            <query>
+                <![CDATA[select e from yaap$Product e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="gridMain">
+        <grid id="gridMain"
+              spacing="true"
+              width="100%">
+            <columns>
+                <column flex="0.2"/>
+                <column flex="0.5"/>
+                <column flex="0.1"/>
+                <column flex="0.1"/>
+                <column flex="0.1"/>
+            </columns>
+            <rows>
+                <row>
+                    <label id="lbl_1"
+                           align="MIDDLE_LEFT"
+                           value="1"
+                           width="100%"/>
+                    <lookupPickerField width="100%"
+                                       optionsDatasource="dsProducts"/>
+                    <textField width="100%"/>
+                    <textField width="100%"/>
+                    <textField width="100%"/>
+                </row>
+            </rows>
+        </grid>
+    </layout>
+</window>
