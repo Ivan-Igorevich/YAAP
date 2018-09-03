@@ -34,17 +34,14 @@
         <label id="lblCaption"
                stylename="h1"
                value="msg://lblCpt"/>
-        <groupBox id="gbMain"
-                  spacing="true">
+        <scrollBox id="gbMain"
+                   spacing="true">
             <grid id="gridMain"
                   spacing="true"
-                  width="100%">
+                  width="100%" >
                 <columns>
-                    <column flex="0.2"/>
-                    <column flex="0.5"/>
-                    <column flex="0.1"/>
-                    <column flex="0.1"/>
-                    <column flex="0.1"/>
+                    <column flex="0.15"/>
+                    <column flex="0.85"/>
                 </columns>
                 <rows>
                     <row>
@@ -58,48 +55,22 @@
                         <label id="lblCategory"
                                value="msg://lblCategory"
                                width="100%"/>
-                        <pickerField colspan="4"
-                                     metaClass="yaap$CatSpend"
+                        <pickerField metaClass="yaap$CatSpend"
                                      width="100%"/>
                     </row>
                     <row>
                         <label id="lblCompany"
                                value="msg://lblCompany"
                                width="100%"/>
-                        <lookupPickerField colspan="4"
-                                           optionsDatasource="dsCompanies"
+                        <lookupPickerField optionsDatasource="dsCompanies"
                                            width="100%"/>
                     </row>
                     <row>
                         <label id="lblDescription"
                                value="msg://lblDescription"
                                width="100%"/>
-                        <textArea colspan="4"
-                                  rows="2"
+                        <textArea rows="2"
                                   width="100%"/>
-                    </row>
-                    <row>
-                        <label id="lblEnum"
-                               value="msg://lblEnum"
-                               width="100%"/>
-                        <label id="lblName"
-                               value="msg://lblName"
-                               width="100%"/>
-                        <label id="lblAmount"
-                               value="msg://lblAmount"
-                               width="100%"/>
-                        <label id="lblVolume"
-                               value="msg://lblVolume"
-                               width="100%"/>
-                        <label id="lblTotal"
-                               value="msg://lblTotal"
-                               width="100%"/>
-                    </row>
-                    <row id="rowLine0">
-                        <frame id="frmLine0"
-                               colspan="5"
-                               screen="yaap$frmCheckLine"
-                               width="100%"/>
                     </row>
                     <row>
                         <label id="lblSpacing"
@@ -113,14 +84,14 @@
                     </row>
                 </rows>
             </grid>
-            <buttonsPanel align="BOTTOM_LEFT">
-                <button id="btnOk"
-                        caption="msg://btnSave"
-                        invoke="btnOkClick"/>
-                <button id="btnCancel"
-                        caption="msg://btnCancel"
-                        invoke="btnCancelClick"/>
-            </buttonsPanel>
-        </groupBox>
+        </scrollBox>
+        <buttonsPanel align="BOTTOM_LEFT">
+            <button id="btnOk"
+                    caption="msg://btnSave"
+                    invoke="btnOkClick"/>
+            <button id="btnCancel"
+                    caption="msg://btnCancel"
+                    invoke="btnCancelClick"/>
+        </buttonsPanel>
     </layout>
 </window>

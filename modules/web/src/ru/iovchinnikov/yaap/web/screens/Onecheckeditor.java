@@ -33,16 +33,33 @@ public class Onecheckeditor extends AbstractWindow {
     public void ready() {
         super.ready();
         int rowNumber = gridMain.getRows();
+        moveButtonAdd(rowNumber);
+        FrmchecklineHeaders head = (FrmchecklineHeaders) openFrame(null, "yaap$frmCheckLine.headers");
+        gridMain.add(head, POS_BTTN, rowNumber - 1);
+        addEmptyRow();
+    }
 
-        gridMain.setRows(rowNumber + 1);
-        ButtonsPanel btnAddPanel = getButtonAdd(rowNumber);
-        Frmcheckline oneLine = (Frmcheckline) gridMain.getComponent(POS_LINE, rowNumber - 2);
-        Frmcheckline newLine;
-        oneLine.setId(oneLine.getId() + "1");
-        gridMain.add(oneLine, POS_LINE, rowNumber - 1);
-        gridMain.add(componentsFactory.createComponent(Label.class), POS_LINE, rowNumber);
-        gridMain.add(btnAddPanel, POS_BTTN, rowNumber);
+    private void addEmptyRow() {
+        int rowNumber = gridMain.getRows();
+        int enumer = rowNumber - 5;
+        moveButtonAdd(rowNumber);
+        Label lblEnum = componentsFactory.createComponent(Label.class);     // create enum label
+        lblEnum.setId("lblEnum" + enumer);
+        lblEnum.setValue(enumer);
+        Frmcheckline newLine = (Frmcheckline) openFrame(null, "yaap$frmCheckLine");     // create frame
+        newLine.setId("frmLine" + enumer);
+        gridMain.add(lblEnum, POS_LINE, rowNumber - 1);                     // put enum
+        gridMain.add(newLine, POS_BTTN, rowNumber - 1);                     // put frame
+    }
 
+    private void moveButtonAdd(int rowNumber) {
+        gridMain.setRows(rowNumber + 1);                                    // add a row
+        ButtonsPanel btnAddPanel = getButtonAdd(rowNumber);                 // get and remove add button
+        gridMain.remove(getComponent("lblSpacing"));                        // remove spacing label
+        Label lblSpacing = componentsFactory.createComponent(Label.class);  // create new spacing label
+        lblSpacing.setId("lblSpacing");
+        gridMain.add(lblSpacing, POS_LINE, rowNumber);                      // put spacing label
+        gridMain.add(btnAddPanel, POS_BTTN, rowNumber);                     // put add button
     }
 
     public void btnCancelClick() {
@@ -53,6 +70,7 @@ public class Onecheckeditor extends AbstractWindow {
     }
 
     public void btnAddClick() {
+        addEmptyRow();
     }
 
     private ButtonsPanel getButtonAdd(int rowNumber) {

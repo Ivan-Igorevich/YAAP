@@ -34,4 +34,6 @@
             template="ru/iovchinnikov/yaap/web/product/product-edit.xml"/>
     <screen id="yaap$frmCheckLine"
             template="ru/iovchinnikov/yaap/web/screens/frmCheckLine.xml"/>
+    <screen id="yaap$frmCheckLine.headers"
+            template="ru/iovchinnikov/yaap/web/screens/frmCheckLine-headers.xml"/>
 </screen-config>
