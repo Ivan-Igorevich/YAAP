@@ -32,6 +32,5 @@ public class Frmcheckline extends AbstractFrame {
         tx.setName(names.getValue());
         tx.setSource(company);
         dataManager.commit(tx);
-
     }
 }
