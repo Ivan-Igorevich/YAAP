@@ -5,6 +5,8 @@ import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.xml.layout.ComponentsFactory;
 
 import javax.inject.Inject;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Date;
 import java.util.Map;
 import java.util.Objects;
@@ -13,7 +15,9 @@ public class Onecheckeditor extends AbstractWindow {
     private static final int POS_LINE = 0;
     private static final int POS_BTTN = 1;
 
-
+    @Inject private LookupPickerField lpfCmp;
+    @Inject private PickerField pfCat;
+    @Inject private ResizableTextArea taDesc;
     @Inject private TimeSource timeSource;
     @Inject private ComponentsFactory componentsFactory;
     @Inject private DatePicker dateBuy;
@@ -67,6 +71,13 @@ public class Onecheckeditor extends AbstractWindow {
     }
 
     public void btnOkClick() {
+        Date d = dateBuy.getValue() == null ? new Date(System.currentTimeMillis()) : dateBuy.getValue();
+        for (int i = 5; i < gridMain.getRows() - 1; i++) {
+            Frmcheckline line = (Frmcheckline) gridMain.getComponent(POS_BTTN, i);
+            if (line == null) continue;
+            line.saveTx(d, pfCat.getValue(), lpfCmp.getValue(), taDesc.getValue());
+        }
+        this.close("saved");
     }
 
     public void btnAddClick() {
