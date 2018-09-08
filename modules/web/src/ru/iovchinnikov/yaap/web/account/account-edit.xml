@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="ru.iovchinnikov.yaap.web.account.AccountEdit"
+        datasource="accountDs"
+        focusComponent="fieldGroup"
+        messagesPack="ru.iovchinnikov.yaap.web.account">
+    <dsContext>
+        <datasource id="accountDs"
+                    class="ru.iovchinnikov.yaap.entity.Account"
+                    view="account-view">
+            <datasource id="currentPeriodDs"
+                        property="currentPeriod"/>
+        </datasource>
+    </dsContext>
+    <dialogMode forceDialog="true"
+                height="170"
+                width="480"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="accountDs">
+            <column width="100%">
+                <field property="name"/>
+                <field property="currency"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

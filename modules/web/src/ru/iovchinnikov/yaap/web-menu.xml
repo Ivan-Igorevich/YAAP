@@ -15,4 +15,6 @@
           screen="yaap$Product.browse"/>
     <item insertBefore="administration"
           screen="yaap$Company.browse"/>
+    <item insertBefore="administration"
+          screen="yaap$Account.browse"/>
 </menu-config>

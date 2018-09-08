@@ -36,4 +36,8 @@
             template="ru/iovchinnikov/yaap/web/screens/frmCheckLine.xml"/>
     <screen id="yaap$frmCheckLine.headers"
             template="ru/iovchinnikov/yaap/web/screens/frmCheckLine-headers.xml"/>
+    <screen id="yaap$Account.browse"
+            template="ru/iovchinnikov/yaap/web/account/account-browse.xml"/>
+    <screen id="yaap$Account.edit"
+            template="ru/iovchinnikov/yaap/web/account/account-edit.xml"/>
 </screen-config>

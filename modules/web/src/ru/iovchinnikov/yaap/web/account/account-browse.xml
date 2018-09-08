@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="ru.iovchinnikov.yaap.web.account.AccountBrowse"
+        focusComponent="accountsTable"
+        lookupComponent="accountsTable"
+        messagesPack="ru.iovchinnikov.yaap.web.account">
+    <dsContext>
+        <groupDatasource id="accountsDs"
+                         class="ru.iovchinnikov.yaap.entity.Account"
+                         view="account-view">
+            <query>
+                <![CDATA[select e from yaap$Account e where e.owner.login = :session$userLogin]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="400"
+                width="600"
+                forceDialog="true"/>
+    <layout expand="accountsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="accountsTable"
+                datasource="accountsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="accountsTable"
+                    width="100%">
+            <actions>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="currency"/>
+            </columns>
+            <rows datasource="accountsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="editBtn"
+                        action="accountsTable.edit"/>
+                <button id="removeBtn"
+                        action="accountsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

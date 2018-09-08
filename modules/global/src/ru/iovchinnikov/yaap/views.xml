@@ -28,4 +28,29 @@
         <property name="parent"
                   view="_minimal"/>
     </view>
+    <view class="ru.iovchinnikov.yaap.entity.Period"
+          extends="_local"
+          name="period-view">
+        <property name="trxs"
+                  view="transaction-view"/>
+        <property name="account"
+                  view="_minimal">
+            <property name="name"/>
+        </property>
+    </view>
+    <view class="ru.iovchinnikov.yaap.entity.Account"
+          extends="_local"
+          name="account-view">
+        <property name="archive"
+                  view="_minimal">
+            <property name="balanceStart"/>
+            <property name="balanceEnd"/>
+            <property name="dateStart"/>
+            <property name="dateEnd"/>
+        </property>
+        <property name="currentPeriod"
+                  view="period-view"/>
+        <property name="owner"
+                  view="app"/>
+    </view>
 </views>
