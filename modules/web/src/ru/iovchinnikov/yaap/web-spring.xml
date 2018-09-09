@@ -12,6 +12,10 @@
             <map>
                 <entry key="yaap_BalanceService"
                        value="ru.iovchinnikov.yaap.service.BalanceService"/>
+                <entry key="yaap_PeriodService"
+                       value="ru.iovchinnikov.yaap.service.PeriodService"/>
+                <entry key="yaap_AccountService"
+                       value="ru.iovchinnikov.yaap.service.AccountService"/>
             </map>
         </property>
     </bean>

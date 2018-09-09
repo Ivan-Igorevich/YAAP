@@ -52,6 +52,14 @@
                                     width="100%"/>
                     </row>
                     <row>
+                        <label id="lblAccount"
+                               value="msg://lblAccount"
+                               width="100%"/>
+                        <pickerField id="pfAcc"
+                                     metaClass="yaap$Account"
+                                     width="100%"/>
+                    </row>
+                    <row>
                         <label id="lblCategory"
                                value="msg://lblCategory"
                                width="100%"/>

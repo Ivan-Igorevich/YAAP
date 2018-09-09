@@ -53,6 +53,7 @@ create table YAAP_ACCOUNT (
     DELETED_BY varchar(50),
     --
     OWNER_ID varchar(36) not null,
+    IS_DEFAULT boolean not null,
     NAME varchar(255),
     CURRENT_PERIOD_ID varchar(36),
     CURRENCY varchar(255),

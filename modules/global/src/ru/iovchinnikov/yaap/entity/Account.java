@@ -15,7 +15,9 @@ import javax.persistence.OneToMany;
 import com.haulmont.cuba.security.entity.User;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import com.haulmont.chile.core.annotations.NamePattern;
 
+@NamePattern("%s|name")
 @Table(name = "YAAP_ACCOUNT")
 @Entity(name = "yaap$Account")
 public class Account extends StandardEntity {
@@ -25,6 +27,10 @@ public class Account extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "OWNER_ID")
     protected User owner;
+
+    @NotNull
+    @Column(name = "IS_DEFAULT", nullable = false)
+    protected Boolean isDefault = false;
 
     @Column(name = "NAME")
     protected String name;
@@ -40,6 +46,15 @@ public class Account extends StandardEntity {
 
     @Column(name = "CURRENCY")
     protected String currency;
+
+    public void setIsDefault(Boolean isDefault) {
+        this.isDefault = isDefault;
+    }
+
+    public Boolean getIsDefault() {
+        return isDefault;
+    }
+
 
     public void setOwner(User owner) {
         this.owner = owner;

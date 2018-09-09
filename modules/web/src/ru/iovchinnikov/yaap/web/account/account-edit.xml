@@ -14,7 +14,7 @@
         </datasource>
     </dsContext>
     <dialogMode forceDialog="true"
-                height="170"
+                height="210"
                 width="480"/>
     <layout expand="windowActions"
             spacing="true">
@@ -23,6 +23,7 @@
             <column width="100%">
                 <field property="name"/>
                 <field property="currency"/>
+                <field property="isDefault"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

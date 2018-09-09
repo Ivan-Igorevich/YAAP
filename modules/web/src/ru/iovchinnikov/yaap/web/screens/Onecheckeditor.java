@@ -1,17 +1,24 @@
 package ru.iovchinnikov.yaap.web.screens;
 
+import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.core.global.LoadContext;
 import com.haulmont.cuba.core.global.TimeSource;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.xml.layout.ComponentsFactory;
+import com.haulmont.cuba.security.global.UserSession;
+import ru.iovchinnikov.yaap.entity.Account;
 
 import javax.inject.Inject;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 public class Onecheckeditor extends AbstractWindow {
     private static final int POS_LINE = 0;
     private static final int POS_BTTN = 1;
 
+    @Inject private UserSession userSession;
+    @Inject private DataManager dataManager;
     @Inject private LookupPickerField lpfCmp;
     @Inject private PickerField pfCat;
     @Inject private ResizableTextArea taDesc;
@@ -19,6 +26,7 @@ public class Onecheckeditor extends AbstractWindow {
     @Inject private ComponentsFactory componentsFactory;
     @Inject private DatePicker dateBuy;
     @Inject private GridLayout gridMain;
+    @Inject private PickerField pfAcc;
 
     @Override
     public void init(Map<String, Object> params) {
@@ -33,6 +41,13 @@ public class Onecheckeditor extends AbstractWindow {
     @Override
     public void ready() {
         super.ready();
+
+        LoadContext<Account> ctx = LoadContext.create(Account.class);
+        ctx.setQuery(LoadContext.createQuery("select e from yaap$Account e where e.owner.id = :userid and e.isDefault = true")
+                .setParameter("userid", userSession.getUser().getId()));
+        Account acct = dataManager.load(ctx);
+        pfAcc.setValue(acct);
+
         int rowNumber = gridMain.getRows();
         moveButtonAdd(rowNumber);
         FrmchecklineHeaders head = (FrmchecklineHeaders) openFrame(null, "yaap$frmCheckLine.headers");
