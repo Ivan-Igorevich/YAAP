@@ -1,5 +1,6 @@
 package ru.iovchinnikov.yaap.service;
 
+import com.haulmont.cuba.core.global.CommitContext;
 import com.haulmont.cuba.core.global.DataManager;
 import com.haulmont.cuba.core.global.Metadata;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class PeriodServiceBean implements PeriodService {
         }
         current.getTrxs().add(trx);
         trx.setPeriod(current);
-        dataManager.commit(current);
-        dataManager.commit(account);
+        CommitContext ctx = new CommitContext(trx, current, account);
+        dataManager.commit(ctx);
     }
 }

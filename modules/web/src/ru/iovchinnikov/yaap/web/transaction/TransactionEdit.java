@@ -58,7 +58,7 @@ public class TransactionEdit extends AbstractEditor<Transaction> {
 
     @Override
     public void commitAndClose() {
-        super.commitAndClose();
         periodService.setPeriod(getItem(), lpfAcct.getValue());
+        close(AbstractEditor.COMMIT_ACTION_ID, true);
     }
 }
