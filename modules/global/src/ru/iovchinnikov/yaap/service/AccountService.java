@@ -8,4 +8,6 @@ public interface AccountService {
     String NAME = "yaap_AccountService";
 
     void setDefault(Account account, User user);
+
+    Account getDefault(User user);
 }

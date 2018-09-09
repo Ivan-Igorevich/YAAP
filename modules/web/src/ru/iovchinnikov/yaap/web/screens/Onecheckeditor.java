@@ -7,6 +7,7 @@ import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.xml.layout.ComponentsFactory;
 import com.haulmont.cuba.security.global.UserSession;
 import ru.iovchinnikov.yaap.entity.Account;
+import ru.iovchinnikov.yaap.service.AccountService;
 
 import javax.inject.Inject;
 import java.util.Date;
@@ -17,13 +18,13 @@ public class Onecheckeditor extends AbstractWindow {
     private static final int POS_LINE = 0;
     private static final int POS_BTTN = 1;
 
+    @Inject private TimeSource timeSource;
+    @Inject private ComponentsFactory componentsFactory;
     @Inject private UserSession userSession;
-    @Inject private DataManager dataManager;
+    @Inject private AccountService accountService;
     @Inject private LookupPickerField lpfCmp;
     @Inject private PickerField pfCat;
     @Inject private ResizableTextArea taDesc;
-    @Inject private TimeSource timeSource;
-    @Inject private ComponentsFactory componentsFactory;
     @Inject private DatePicker dateBuy;
     @Inject private GridLayout gridMain;
     @Inject private PickerField pfAcc;
@@ -41,12 +42,7 @@ public class Onecheckeditor extends AbstractWindow {
     @Override
     public void ready() {
         super.ready();
-
-        LoadContext<Account> ctx = LoadContext.create(Account.class);
-        ctx.setQuery(LoadContext.createQuery("select e from yaap$Account e where e.owner.id = :userid and e.isDefault = true")
-                .setParameter("userid", userSession.getUser().getId()));
-        Account acct = dataManager.load(ctx);
-        pfAcc.setValue(acct);
+        pfAcc.setValue(accountService.getDefault(userSession.getUser()));
 
         int rowNumber = gridMain.getRows();
         moveButtonAdd(rowNumber);

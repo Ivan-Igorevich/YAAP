@@ -16,18 +16,30 @@
                 <![CDATA[select e from yaap$Company e]]>
             </query>
         </collectionDatasource>
+        <groupDatasource id="accountDs"
+                         class="ru.iovchinnikov.yaap.entity.Account"
+                         view="account-view">
+            <query>
+                <![CDATA[select e from yaap$Account e where e.owner.login = :session$userLogin]]>
+            </query>
+        </groupDatasource>
     </dsContext>
     <dialogMode height="600"
                 width="400"
                 forceDialog="true"/>
     <layout expand="windowActions"
             spacing="true">
-        <hbox>
+        <hbox spacing="true">
             <label value="msg://source" />
             <lookupPickerField id="lpfSrc"
                                datasource="transactionDs"
                                optionsDatasource="sourcesDs"
                                property="source"/>
+        </hbox>
+        <hbox spacing="true">
+            <label value="msg://account" width="70px"/>
+            <lookupPickerField id="lpfAcct"
+                               optionsDatasource="accountDs"/>
         </hbox>
         <fieldGroup id="mainGroup"
                     datasource="transactionDs">

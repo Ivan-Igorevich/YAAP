@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import com.haulmont.chile.core.annotations.NamePattern;
 
-@NamePattern("%s|name")
+@NamePattern("%s, %s|name,currency")
 @Table(name = "YAAP_ACCOUNT")
 @Entity(name = "yaap$Account")
 public class Account extends StandardEntity {
@@ -55,7 +55,6 @@ public class Account extends StandardEntity {
         return isDefault;
     }
 
-
     public void setOwner(User owner) {
         this.owner = owner;
     }
@@ -63,7 +62,6 @@ public class Account extends StandardEntity {
     public User getOwner() {
         return owner;
     }
-
 
     public void setArchive(List<Period> archive) {
         this.archive = archive;
@@ -73,7 +71,6 @@ public class Account extends StandardEntity {
         return archive;
     }
 
-
     public void setCurrentPeriod(Period currentPeriod) {
         this.currentPeriod = currentPeriod;
     }
@@ -81,7 +78,6 @@ public class Account extends StandardEntity {
     public Period getCurrentPeriod() {
         return currentPeriod;
     }
-
 
     public void setName(String name) {
         this.name = name;
@@ -99,5 +95,9 @@ public class Account extends StandardEntity {
         return currency;
     }
 
-
+    @Override
+    public String toString() {
+        String curr = getCurrency() == null ? "" : getCurrency();
+        return String.format("%s, %s", getName(), curr);
+    }
 }
