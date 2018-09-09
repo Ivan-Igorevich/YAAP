@@ -46,4 +46,9 @@ public class AccountServiceBean implements AccountService {
         }
         return null;
     }
+
+    @Override
+    public List<Account> getUserAccounts(User user) {
+        return getAllAccounts(user);
+    }
 }

@@ -1,7 +1,5 @@
 package ru.iovchinnikov.yaap.web.screens;
 
-import com.haulmont.cuba.core.global.DataManager;
-import com.haulmont.cuba.core.global.LoadContext;
 import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.cuba.gui.WindowManager;
 import com.haulmont.cuba.gui.components.AbstractEditor;
@@ -11,6 +9,7 @@ import com.haulmont.cuba.gui.components.mainwindow.FtsField;
 import com.haulmont.cuba.gui.components.mainwindow.SideMenu;
 import com.haulmont.cuba.security.global.UserSession;
 import ru.iovchinnikov.yaap.entity.Account;
+import ru.iovchinnikov.yaap.service.AccountService;
 import ru.iovchinnikov.yaap.service.BalanceService;
 
 import javax.inject.Inject;
@@ -20,8 +19,8 @@ import java.util.Map;
 public class ExtAppMainWindow extends AbstractMainWindow {
     @Inject private Metadata metadata;
     @Inject private UserSession userSession;
-    @Inject private DataManager dataManager;
     @Inject private BalanceService balanceService;
+    @Inject private AccountService accountService;
     @Inject private FtsField ftsField;
     @Inject private SideMenu sideMenu;
     @Inject private Embedded logoImage;
@@ -38,10 +37,7 @@ public class ExtAppMainWindow extends AbstractMainWindow {
     }
 
     private void addAllAccounts() {
-        LoadContext<Account> ctx = LoadContext.create(Account.class);
-        ctx.setQuery(LoadContext.createQuery("select e from yaap$Account e where e.owner.id = :userid")
-                .setParameter("userid", userSession.getUser().getId()));
-        List<Account> accts = dataManager.loadList(ctx);
+        List<Account> accts = accountService.getUserAccounts(userSession.getUser());
         int aCount = 0;
         for (Account a : accts) {
             SideMenu.MenuItem oneAcc = sideMenu.createMenuItem("account" + aCount);

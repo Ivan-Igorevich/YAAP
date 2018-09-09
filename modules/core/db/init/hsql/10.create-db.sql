@@ -74,7 +74,7 @@ create table YAAP_PERIOD (
     DELETED_BY varchar(50),
     --
     BALANCE_START double precision not null,
-    BALANCE_END double precision not null,
+    BALANCE_END double precision,
     DATE_START timestamp not null,
     DATE_END timestamp,
     ACCOUNT_ID varchar(36),

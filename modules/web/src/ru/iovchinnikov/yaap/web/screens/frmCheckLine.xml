@@ -27,7 +27,8 @@
                 <row>
                     <lookupPickerField id="names"
                                        width="100%"
-                                       optionsDatasource="dsProducts"/>
+                                       optionsDatasource="dsProducts"
+                                       refreshOptionsOnLookupClose="true"/>
                     <textField id="vol"
                                width="100%"/>
                     <textField id="amnt"

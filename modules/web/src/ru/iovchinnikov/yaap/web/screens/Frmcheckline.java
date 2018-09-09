@@ -11,6 +11,7 @@ import ru.iovchinnikov.yaap.entity.Transaction;
 
 import javax.inject.Inject;
 import java.util.Date;
+import java.util.Map;
 
 public class Frmcheckline extends AbstractFrame {
     @Inject private Metadata metadata;
@@ -19,6 +20,8 @@ public class Frmcheckline extends AbstractFrame {
     @Inject private TextField cost;
     @Inject private LookupPickerField names;
     @Inject private TextField vol;
+
+
 
     public void saveTx(Date date, Category category, Company company, String desc) {
         Transaction tx = metadata.create(Transaction.class);
