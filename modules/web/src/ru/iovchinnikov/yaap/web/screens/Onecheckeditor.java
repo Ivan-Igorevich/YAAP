@@ -53,7 +53,7 @@ public class Onecheckeditor extends AbstractWindow {
 
     private void addEmptyRow() {
         int rowNumber = gridMain.getRows();
-        int enumer = rowNumber - 5;
+        int enumer = rowNumber - 6;
         moveButtonAdd(rowNumber);
         Label lblEnum = componentsFactory.createComponent(Label.class);     // create enum label
         lblEnum.setId("lblEnum" + enumer);
@@ -80,7 +80,7 @@ public class Onecheckeditor extends AbstractWindow {
 
     public void btnOkClick() {
         Date d = dateBuy.getValue() == null ? new Date(System.currentTimeMillis()) : dateBuy.getValue();
-        for (int i = 5; i < gridMain.getRows() - 1; i++) {
+        for (int i = 6; i < gridMain.getRows() - 1; i++) {
             Frmcheckline line = (Frmcheckline) gridMain.getComponent(POS_BTTN, i);
             if (line == null) continue;
             line.saveTx(d, pfCat.getValue(), lpfCmp.getValue(), taDesc.getValue());
