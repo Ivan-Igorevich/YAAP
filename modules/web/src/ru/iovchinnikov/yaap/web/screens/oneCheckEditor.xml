@@ -52,24 +52,35 @@
                                     width="100%"/>
                     </row>
                     <row>
+                        <label id="lblAccount"
+                               value="msg://lblAccount"
+                               width="100%"/>
+                        <pickerField id="pfAcc"
+                                     metaClass="yaap$Account"
+                                     width="100%"/>
+                    </row>
+                    <row>
                         <label id="lblCategory"
                                value="msg://lblCategory"
                                width="100%"/>
-                        <pickerField metaClass="yaap$CatSpend"
+                        <pickerField id="pfCat"
+                                     metaClass="yaap$CatSpend"
                                      width="100%"/>
                     </row>
                     <row>
                         <label id="lblCompany"
                                value="msg://lblCompany"
                                width="100%"/>
-                        <lookupPickerField optionsDatasource="dsCompanies"
+                        <lookupPickerField id="lpfCmp"
+                                           optionsDatasource="dsCompanies"
                                            width="100%"/>
                     </row>
                     <row>
                         <label id="lblDescription"
                                value="msg://lblDescription"
                                width="100%"/>
-                        <textArea rows="2"
+                        <textArea id="taDesc"
+                                  rows="2"
                                   width="100%"/>
                     </row>
                     <row>

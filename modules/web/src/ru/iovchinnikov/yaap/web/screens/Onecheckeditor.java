@@ -1,23 +1,33 @@
 package ru.iovchinnikov.yaap.web.screens;
 
+import com.haulmont.cuba.core.global.DataManager;
+import com.haulmont.cuba.core.global.LoadContext;
 import com.haulmont.cuba.core.global.TimeSource;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.xml.layout.ComponentsFactory;
+import com.haulmont.cuba.security.global.UserSession;
+import ru.iovchinnikov.yaap.entity.Account;
+import ru.iovchinnikov.yaap.service.AccountService;
 
 import javax.inject.Inject;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class Onecheckeditor extends AbstractWindow {
     private static final int POS_LINE = 0;
     private static final int POS_BTTN = 1;
 
-
     @Inject private TimeSource timeSource;
     @Inject private ComponentsFactory componentsFactory;
+    @Inject private UserSession userSession;
+    @Inject private AccountService accountService;
+    @Inject private LookupPickerField lpfCmp;
+    @Inject private PickerField pfCat;
+    @Inject private ResizableTextArea taDesc;
     @Inject private DatePicker dateBuy;
     @Inject private GridLayout gridMain;
+    @Inject private PickerField pfAcc;
 
     @Override
     public void init(Map<String, Object> params) {
@@ -32,6 +42,8 @@ public class Onecheckeditor extends AbstractWindow {
     @Override
     public void ready() {
         super.ready();
+        pfAcc.setValue(accountService.getDefault(userSession.getUser()));
+
         int rowNumber = gridMain.getRows();
         moveButtonAdd(rowNumber);
         FrmchecklineHeaders head = (FrmchecklineHeaders) openFrame(null, "yaap$frmCheckLine.headers");
@@ -67,6 +79,13 @@ public class Onecheckeditor extends AbstractWindow {
     }
 
     public void btnOkClick() {
+        Date d = dateBuy.getValue() == null ? new Date(System.currentTimeMillis()) : dateBuy.getValue();
+        for (int i = 5; i < gridMain.getRows() - 1; i++) {
+            Frmcheckline line = (Frmcheckline) gridMain.getComponent(POS_BTTN, i);
+            if (line == null) continue;
+            line.saveTx(d, pfCat.getValue(), lpfCmp.getValue(), taDesc.getValue());
+        }
+        this.close("saved");
     }
 
     public void btnAddClick() {

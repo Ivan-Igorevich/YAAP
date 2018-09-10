@@ -25,11 +25,16 @@
             </columns>
             <rows>
                 <row>
-                    <lookupPickerField width="100%"
-                                       optionsDatasource="dsProducts"/>
-                    <textField width="100%"/>
-                    <textField width="100%"/>
-                    <textField width="100%"/>
+                    <lookupPickerField id="names"
+                                       width="100%"
+                                       optionsDatasource="dsProducts"
+                                       refreshOptionsOnLookupClose="true"/>
+                    <textField id="vol"
+                               width="100%"/>
+                    <textField id="amnt"
+                               width="100%"/>
+                    <textField id="cost"
+                               width="100%"/>
                 </row>
             </rows>
         </grid>

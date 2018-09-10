@@ -1,20 +1,23 @@
 package ru.iovchinnikov.yaap.web.transaction;
 
-import com.haulmont.cuba.core.global.DataManager;
-import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.cuba.core.global.TimeSource;
 import com.haulmont.cuba.gui.components.*;
-import com.haulmont.cuba.gui.data.CollectionDatasource;
+import com.haulmont.cuba.security.global.UserSession;
 import ru.iovchinnikov.yaap.entity.*;
+import ru.iovchinnikov.yaap.service.AccountService;
+import ru.iovchinnikov.yaap.service.PeriodService;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.Date;
 import java.util.Map;
-import java.util.UUID;
 
 public class TransactionEdit extends AbstractEditor<Transaction> {
+    @Inject private AccountService accountService;
+    @Inject private UserSession userSession;
     @Inject private TimeSource timeSource;
+    @Inject private PeriodService periodService;
+    @Inject private LookupPickerField lpfAcct;
     @Named("mainGroup.fTtl") private Field fTtl;
     @Named("mainGroup.fAmnt") private Field fAmnt;
     @Named("mainGroup.fCat") private PickerField fCat;
@@ -38,6 +41,7 @@ public class TransactionEdit extends AbstractEditor<Transaction> {
     @Override
     public void ready() {
         super.ready();
+        lpfAcct.setValue(accountService.getDefault(userSession.getUser()));
         fAmnt.setValue(1);
         fName.setValue(null);
     }
@@ -50,5 +54,11 @@ public class TransactionEdit extends AbstractEditor<Transaction> {
     private void isEarlier(Date date) throws ValidationException {
         if (date.after(timeSource.currentTimestamp()))
             throw new ValidationException(getMessage("onlyPast"));
+    }
+
+    @Override
+    public void commitAndClose() {
+        periodService.setPeriod(getItem(), lpfAcct.getValue());
+        close(AbstractEditor.COMMIT_ACTION_ID, true);
     }
 }

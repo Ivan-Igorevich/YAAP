@@ -31,8 +31,7 @@ public class Period extends StandardEntity {
     @Column(name = "BALANCE_START", nullable = false)
     protected Double balanceStart;
 
-    @NotNull
-    @Column(name = "BALANCE_END", nullable = false)
+    @Column(name = "BALANCE_END")
     protected Double balanceEnd;
 
     @Temporal(TemporalType.TIMESTAMP)

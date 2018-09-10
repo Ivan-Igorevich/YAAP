@@ -52,6 +52,8 @@ create table YAAP_ACCOUNT (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
+    OWNER_ID varchar(36) not null,
+    IS_DEFAULT boolean not null,
     NAME varchar(255),
     CURRENT_PERIOD_ID varchar(36),
     CURRENCY varchar(255),
@@ -72,7 +74,7 @@ create table YAAP_PERIOD (
     DELETED_BY varchar(50),
     --
     BALANCE_START double precision not null,
-    BALANCE_END double precision not null,
+    BALANCE_END double precision,
     DATE_START timestamp not null,
     DATE_END timestamp,
     ACCOUNT_ID varchar(36),
