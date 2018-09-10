@@ -1,17 +1,13 @@
 package ru.iovchinnikov.yaap.web.screens;
 
-import com.haulmont.cuba.core.global.DataManager;
-import com.haulmont.cuba.core.global.LoadContext;
 import com.haulmont.cuba.core.global.TimeSource;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.xml.layout.ComponentsFactory;
 import com.haulmont.cuba.security.global.UserSession;
-import ru.iovchinnikov.yaap.entity.Account;
 import ru.iovchinnikov.yaap.service.AccountService;
 
 import javax.inject.Inject;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 public class Onecheckeditor extends AbstractWindow {
@@ -83,7 +79,7 @@ public class Onecheckeditor extends AbstractWindow {
         for (int i = 6; i < gridMain.getRows() - 1; i++) {
             Frmcheckline line = (Frmcheckline) gridMain.getComponent(POS_BTTN, i);
             if (line == null) continue;
-            line.saveTx(d, pfCat.getValue(), lpfCmp.getValue(), taDesc.getValue());
+            line.saveTx(d, pfCat.getValue(), lpfCmp.getValue(), taDesc.getValue(), pfAcc.getValue());
         }
         this.close("saved");
     }

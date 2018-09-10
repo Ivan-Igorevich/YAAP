@@ -26,14 +26,16 @@ public class AccountServiceBean implements AccountService {
     private List<Account> getAllAccounts(Account account, User user) {
         LoadContext<Account> ctx = LoadContext.create(Account.class);
         ctx.setQuery(LoadContext.createQuery("select e from yaap$Account e where e.owner.id = :userid and e.id <> :acctId")
-                .setParameter("userid", user.getId())
-                .setParameter("acctId", account.getId()));
+                    .setParameter("userid", user.getId())
+                    .setParameter("acctId", account.getId()))
+                .setView("account-view");
         return dataManager.loadList(ctx);
     }
     private List<Account> getAllAccounts(User user) {
         LoadContext<Account> ctx = LoadContext.create(Account.class);
         ctx.setQuery(LoadContext.createQuery("select e from yaap$Account e where e.owner.id = :userid")
-                .setParameter("userid", user.getId()));
+                    .setParameter("userid", user.getId()))
+                .setView("account-view");
         return dataManager.loadList(ctx);
     }
 

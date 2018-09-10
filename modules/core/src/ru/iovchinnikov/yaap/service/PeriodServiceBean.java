@@ -29,6 +29,9 @@ public class PeriodServiceBean implements PeriodService {
             current.setDateStart(new Date(System.currentTimeMillis()));
             current.setBalanceStart(0.0);
             account.setCurrentPeriod(current);
+        } else {
+            account = dataManager.reload(account, "account-view");
+            current = dataManager.reload(account.getCurrentPeriod(), "period-view");
         }
         current.getTrxs().add(trx);
         trx.setPeriod(current);
