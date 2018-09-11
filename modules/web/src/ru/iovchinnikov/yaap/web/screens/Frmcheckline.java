@@ -5,9 +5,11 @@ import com.haulmont.cuba.core.global.Metadata;
 import com.haulmont.cuba.gui.components.AbstractFrame;
 import com.haulmont.cuba.gui.components.LookupPickerField;
 import com.haulmont.cuba.gui.components.TextField;
+import ru.iovchinnikov.yaap.entity.Account;
 import ru.iovchinnikov.yaap.entity.Category;
 import ru.iovchinnikov.yaap.entity.Company;
 import ru.iovchinnikov.yaap.entity.Transaction;
+import ru.iovchinnikov.yaap.service.PeriodService;
 
 import javax.inject.Inject;
 import java.util.Date;
@@ -20,10 +22,9 @@ public class Frmcheckline extends AbstractFrame {
     @Inject private TextField cost;
     @Inject private LookupPickerField names;
     @Inject private TextField vol;
+    @Inject private PeriodService periodService;
 
-
-
-    public void saveTx(Date date, Category category, Company company, String desc) {
+    public void saveTx(Date date, Category category, Company company, String desc, Account account) {
         Transaction tx = metadata.create(Transaction.class);
         tx.setAmount(Double.parseDouble(amnt.getRawValue()));
         tx.setVolume(Double.parseDouble(vol.getRawValue()));
@@ -34,6 +35,7 @@ public class Frmcheckline extends AbstractFrame {
         tx.setDirection(false);
         tx.setName(names.getValue());
         tx.setSource(company);
-        dataManager.commit(tx);
+        periodService.setPeriod(tx, account);
+        //dataManager.commit(tx);
     }
 }

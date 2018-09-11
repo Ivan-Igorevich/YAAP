@@ -1,18 +1,15 @@
 package ru.iovchinnikov.yaap.web.screens;
 
-import com.haulmont.cuba.core.global.DataManager;
-import com.haulmont.cuba.core.global.LoadContext;
 import com.haulmont.cuba.core.global.TimeSource;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.xml.layout.ComponentsFactory;
 import com.haulmont.cuba.security.global.UserSession;
-import com.vaadin.annotations.JavaScript;
-import com.vaadin.server.Page;
-import ru.iovchinnikov.yaap.entity.Account;
 import ru.iovchinnikov.yaap.service.AccountService;
+import com.vaadin.server.Page;
 
 import javax.inject.Inject;
-import java.util.*;
+import java.util.Date;
+import java.util.Map;
 
 public class Onecheckeditor extends AbstractWindow {
     private static final int POS_LINE = 0;
@@ -33,7 +30,6 @@ public class Onecheckeditor extends AbstractWindow {
     public void init(Map<String, Object> params) {
         super.init(params);
         dateBuy.addValidator(value -> isEarlier((Date) value));
-
     }
     private void isEarlier(Date date) throws ValidationException {
         if (date.after(timeSource.currentTimestamp()))
@@ -54,7 +50,7 @@ public class Onecheckeditor extends AbstractWindow {
 
     private void addEmptyRow() {
         int rowNumber = gridMain.getRows();
-        int enumer = rowNumber - 5;
+        int enumer = rowNumber - 6;
         moveButtonAdd(rowNumber);
         Label lblEnum = componentsFactory.createComponent(Label.class);     // create enum label
         lblEnum.setId("lblEnum" + enumer);
@@ -63,7 +59,6 @@ public class Onecheckeditor extends AbstractWindow {
         newLine.setId("frmLine" + enumer);
         gridMain.add(lblEnum, POS_LINE, rowNumber - 1);                     // put enum
         gridMain.add(newLine, POS_BTTN, rowNumber - 1);                     // put frame
-
     }
 
     private void moveButtonAdd(int rowNumber) {
@@ -82,10 +77,10 @@ public class Onecheckeditor extends AbstractWindow {
 
     public void btnOkClick() {
         Date d = dateBuy.getValue() == null ? new Date(System.currentTimeMillis()) : dateBuy.getValue();
-        for (int i = 5; i < gridMain.getRows() - 1; i++) {
+        for (int i = 6; i < gridMain.getRows() - 1; i++) {
             Frmcheckline line = (Frmcheckline) gridMain.getComponent(POS_BTTN, i);
             if (line == null) continue;
-            line.saveTx(d, pfCat.getValue(), lpfCmp.getValue(), taDesc.getValue());
+            line.saveTx(d, pfCat.getValue(), lpfCmp.getValue(), taDesc.getValue(), pfAcc.getValue());
         }
         this.close("saved");
     }
@@ -109,5 +104,6 @@ public class Onecheckeditor extends AbstractWindow {
                 " }";
         Page.getCurrent().getJavaScript().execute(scroll_down);
     }
+
 
 }
