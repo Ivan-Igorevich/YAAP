@@ -12,9 +12,7 @@ import ru.iovchinnikov.yaap.entity.Account;
 import ru.iovchinnikov.yaap.service.AccountService;
 
 import javax.inject.Inject;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Onecheckeditor extends AbstractWindow {
     private static final int POS_LINE = 0;
@@ -65,12 +63,7 @@ public class Onecheckeditor extends AbstractWindow {
         newLine.setId("frmLine" + enumer);
         gridMain.add(lblEnum, POS_LINE, rowNumber - 1);                     // put enum
         gridMain.add(newLine, POS_BTTN, rowNumber - 1);                     // put frame
-        String scroll_down = " " +
-                "{" +
-               // " alert(document.querySelectorAll('.c-scrollbox-content > div:nth-child(1)')[0]);"+
-                " document.querySelectorAll('.c-scrollbox-content > div:nth-child(1)')[0].scrollTop=9999;" +
-                " }";
-        Page.getCurrent().getJavaScript().execute(scroll_down);
+
     }
 
     private void moveButtonAdd(int rowNumber) {
@@ -99,6 +92,7 @@ public class Onecheckeditor extends AbstractWindow {
 
     public void btnAddClick() {
         addEmptyRow();
+        scroll();
     }
 
     private ButtonsPanel getButtonAdd(int rowNumber) {
@@ -106,4 +100,14 @@ public class Onecheckeditor extends AbstractWindow {
         gridMain.remove(btnAddPanel);
         return btnAddPanel;
     }
+
+    private void scroll(){
+        String scroll_down = " " +
+                "{" +
+                   "function waiting(){document.querySelector('.c-scrollbox').scrollTop = document.querySelector('.c-scrollbox-content').offsetHeight + 40;} " +
+                   " setTimeout(waiting, 0)" +
+                " }";
+        Page.getCurrent().getJavaScript().execute(scroll_down);
+    }
+
 }
