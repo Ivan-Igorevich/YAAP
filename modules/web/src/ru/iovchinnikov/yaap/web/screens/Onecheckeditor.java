@@ -6,6 +6,8 @@ import com.haulmont.cuba.core.global.TimeSource;
 import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.xml.layout.ComponentsFactory;
 import com.haulmont.cuba.security.global.UserSession;
+import com.vaadin.annotations.JavaScript;
+import com.vaadin.server.Page;
 import ru.iovchinnikov.yaap.entity.Account;
 import ru.iovchinnikov.yaap.service.AccountService;
 
@@ -33,6 +35,7 @@ public class Onecheckeditor extends AbstractWindow {
     public void init(Map<String, Object> params) {
         super.init(params);
         dateBuy.addValidator(value -> isEarlier((Date) value));
+
     }
     private void isEarlier(Date date) throws ValidationException {
         if (date.after(timeSource.currentTimestamp()))
@@ -62,6 +65,12 @@ public class Onecheckeditor extends AbstractWindow {
         newLine.setId("frmLine" + enumer);
         gridMain.add(lblEnum, POS_LINE, rowNumber - 1);                     // put enum
         gridMain.add(newLine, POS_BTTN, rowNumber - 1);                     // put frame
+        String scroll_down = " " +
+                "{" +
+               // " alert(document.querySelectorAll('.c-scrollbox-content > div:nth-child(1)')[0]);"+
+                " document.querySelectorAll('.c-scrollbox-content > div:nth-child(1)')[0].scrollTop=9999;" +
+                " }";
+        Page.getCurrent().getJavaScript().execute(scroll_down);
     }
 
     private void moveButtonAdd(int rowNumber) {

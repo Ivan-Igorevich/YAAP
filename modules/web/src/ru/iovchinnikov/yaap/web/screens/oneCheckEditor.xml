@@ -38,10 +38,10 @@
                    spacing="true">
             <grid id="gridMain"
                   spacing="true"
-                  width="100%" >
+                  width="100%">
                 <columns>
-                    <column flex="0.15"/>
-                    <column flex="0.85"/>
+                    <column flex="0.17"/>
+                    <column flex="0.83"/>
                 </columns>
                 <rows>
                     <row>
