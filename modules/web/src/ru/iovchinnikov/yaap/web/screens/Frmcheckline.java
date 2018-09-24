@@ -26,9 +26,16 @@ public class Frmcheckline extends AbstractFrame {
 
     public void saveTx(Date date, Category category, Company company, String desc, Account account) {
         Transaction tx = metadata.create(Transaction.class);
-        tx.setAmount(Double.parseDouble(amnt.getRawValue()));
-        tx.setVolume(Double.parseDouble(vol.getRawValue()));
-        tx.setTotal(Double.parseDouble(cost.getRawValue()));
+        String amount = amnt.getRawValue();
+        if (amount != null && !"".equals(amount))
+            tx.setAmount(Double.parseDouble(amount));
+        String volume = vol.getRawValue();
+        if (volume != null && !"".equals(volume))
+            tx.setVolume(Double.parseDouble(vol.getRawValue()));
+        String cst = cost.getRawValue();
+        if(cst != null && !"".equals(cst))
+            tx.setTotal(Double.parseDouble(cst));
+
         tx.setCategory(category);
         tx.setDate(date);
         tx.setDescription(desc);
