@@ -10,7 +10,7 @@
                          class="ru.iovchinnikov.yaap.entity.Transaction"
                          view="transaction-view">
             <query>
-                <![CDATA[select e from yaap$Transaction e where e.direction = true]]>
+                <![CDATA[select e from yaap$Transaction e where e.direction = true and e.createdBy = :session$userLogin order by e.date desc]]>
             </query>
         </groupDatasource>
     </dsContext>
